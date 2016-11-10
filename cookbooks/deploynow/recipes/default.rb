@@ -11,13 +11,13 @@ include_recipe 'cloudcli'
 apt_package 'build-essential'
 apt_package 'libaio1'
 
-cloudcli_aws_s3_file '/tmp/deploynow_2.1.0+20161109112209-1_amd64.deb' do
-  bucket 'dnow-test'
-  key 'jenkins/dev-debs/deploynow_2.1.0+20161109112209-1_amd64.deb'
+cloudcli_aws_s3_file "/tmp/#{node['deploynow']['deb']}" do
+  bucket "#{node['deploynow']['deb_s3_bucket']}"
+  key "#{node['deploynow']['deb_s3_key']}/#{node['deploynow']['deb']}"
 end
 
 dpkg_package 'deploynow' do
-  source '/tmp/deploynow_2.1.0+20161109112209-1_amd64.deb'
+  source "/tmp/#{node['deploynow']['deb']}"
   action :install
 end
 
