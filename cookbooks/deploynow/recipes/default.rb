@@ -6,10 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-include_recipe 'cloudcli-cookbook'
+include_recipe 'cloudcli'
 
 apt_package 'build-essential'
-apt_package 'libai01'
+apt_package 'libaio1'
 
 cloudcli_aws_s3_file '/tmp/deploynow_2.1.0+20161109112209-1_amd64.deb' do
   bucket 'dnow-test'
